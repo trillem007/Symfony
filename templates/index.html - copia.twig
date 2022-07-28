@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TaskController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+{% set count = 0 %}
+
+<table>
+
+{% for task in tasks %}
+    {% if task.user_id==app.user.id %}
+    {% if count == 0 %}
+    <tr>
+        <th>Titol</th><th>Contingut</th><th>Prioritat</th><th>Hores</th><th>Accions</th>
+    </tr>
+    {% endif %}
+    <tr>
+    <td>
+    {{task.title}}
+    </td>
+    <td>
+    {{task.content}}
+    </td>
+    <td>
+    {{task.priority}}
+    </td>
+    <td>
+    {{task.hours}}
+    </td>
+    <td class="botons">
+    <button class="show"><a href="{{ path('task_detail', {'id':task.id})}}" class="btn-show">Show</a></button>
+    <button class="edit"><a href="{{ path('editar_tasca', {'id':task.id})}}" class="btn-edit">Edit</a></button>
+    <button class="delete"><a href="{{ path('eliminar_tasca', {'id':task.id})}}" class="btn-edit">Delete</a></button>
+    </td>
+    </tr>
+    {% set count = count + 1 %}
+    {%endif%}
+{%endfor%}
+    {% if count == 0 %}
+    <tr>
+        <th>Aquest usuari no te cap tasca</th>
+    </tr>
+    {% endif %}
+</table>
+    
+</div>
+{% endblock %}

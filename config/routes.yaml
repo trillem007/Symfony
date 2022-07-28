@@ -1,3 +1,27 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+tasks:
+  path: /tasks
+  controller: App\Controller\TaskController::index
+usuari_crear:
+  path: /crear-usuari
+  controller: App\Controller\UserController::crear
+  #defaults: {origen: "origen", llibre: "Roquefort", magrada: true}
+login:
+  path: /login
+  controller: App\Controller\UserController::login
+logout:
+  path: /logout
+task_detail:
+  path: /task_detail/{id}
+  controller: App\Controller\TaskController::detail
+crear_tasca:
+  path: /crear_tasca
+  controller: App\Controller\TaskController::crear
+editar_tasca:
+  path: /editar_tasca/{id}
+  controller: App\Controller\TaskController::edit
+eliminar_tasca:
+  path: /eliminar_tasca/{id}
+  controller: App\Controller\TaskController::delete
